@@ -243,7 +243,9 @@
 	self.offLabel.font = self.labelFont;
 	self.offLabel.textColor = self.offFontColor;
     if (!isAnimating) {
+        
         CGRect frame = self.frame;
+        CGFloat offset = self.isRounded?(0.2f*frame.size.height):0.0f;
 
         // background
         background.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -252,8 +254,8 @@
         // images
         onImageView.frame = CGRectMake(0, 0, frame.size.width - frame.size.height, frame.size.height);
         offImageView.frame = CGRectMake(frame.size.height, 0, frame.size.width - frame.size.height, frame.size.height);
-		self.onLabel.frame = CGRectMake(0, 0, frame.size.width - frame.size.height, frame.size.height);
-		self.offLabel.frame = CGRectMake(frame.size.height, 0, frame.size.width - frame.size.height, frame.size.height);
+		self.onLabel.frame = CGRectMake(offset, 0, frame.size.width - frame.size.height - offset, frame.size.height);
+		self.offLabel.frame = CGRectMake(frame.size.height, 0, frame.size.width - frame.size.height - offset, frame.size.height);
 		
         // knob
         CGFloat normalKnobWidth = frame.size.height - 2;
